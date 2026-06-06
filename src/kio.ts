@@ -45,7 +45,7 @@ export async function callKio(
       Authorization: `Bearer ${opts.apiKey}`,
       // OpenRouter attribution headers (optional but recommended)
       "HTTP-Referer": opts.referer ?? "https://kioprotocol.xyz",
-      "X-Title": opts.title ?? "KIO — Keep It Out",
+      "X-Title": opts.title ?? "KIO - Keep It Out",
     },
     body: JSON.stringify({
       model: opts.model,
