@@ -105,8 +105,9 @@ app.post("/chat", async (req, reply) => {
         used === -1 ? null : Math.max(0, FREE_DAILY_LIMIT - used),
     };
   } catch (err) {
-    req.log.error({ err }, "kio call failed");
-    return reply.code(502).send({ error: "agent_unavailable" });
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("KIO_CALL_FAILED:", msg);
+    return reply.code(502).send({ error: "agent_unavailable", detail: msg });
   }
 });
 
